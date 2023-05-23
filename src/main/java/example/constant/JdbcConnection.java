@@ -1,0 +1,37 @@
+package example.constant;
+
+import java.net.URL;
+import java.sql.*;
+
+import static example.constant.Jdbcconstant.*;
+
+public class JdbcConnection {
+    private static Connection connection;
+
+    public static Connection getConnection() throws SQLException {
+        connection = DriverManager.getConnection(DB_URL, USER, PASSWORD);
+        return connection;
+    }
+
+
+    public void closeConnection(Connection connection) throws SQLException {
+        if (connection != null) {
+            connection.close();
+        }
+    }
+
+    public void closePreparedStatement(PreparedStatement preparedStatement) throws SQLException {
+        if (preparedStatement != null) {
+            preparedStatement.close();
+        }
+    }
+
+
+    public void closeResultSet(ResultSet resultSet) throws SQLException {
+        if (resultSet != null) {
+            resultSet.close();
+        }
+    }
+
+
+}
