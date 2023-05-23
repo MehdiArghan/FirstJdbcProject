@@ -14,20 +14,20 @@ public class JdbcConnection {
     }
 
 
-    public void closeConnection(Connection connection) throws SQLException {
+    public  static void closeConnection(Connection connection) throws SQLException {
         if (connection != null) {
             connection.close();
         }
     }
 
-    public void closePreparedStatement(PreparedStatement preparedStatement) throws SQLException {
+    public static void closePreparedStatement(PreparedStatement preparedStatement) throws SQLException {
         if (preparedStatement != null) {
             preparedStatement.close();
         }
     }
 
 
-    public void closeResultSet(ResultSet resultSet) throws SQLException {
+    public static void closeResultSet(ResultSet resultSet) throws SQLException {
         if (resultSet != null) {
             resultSet.close();
         }
