@@ -14,7 +14,7 @@ public class JdbcConnection {
     }
 
 
-    public  static void closeConnection(Connection connection) throws SQLException {
+    public static void closeConnection(Connection connection) throws SQLException {
         if (connection != null) {
             connection.close();
         }
