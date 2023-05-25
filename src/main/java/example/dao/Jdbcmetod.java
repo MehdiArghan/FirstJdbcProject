@@ -4,11 +4,9 @@ import example.constant.JdbcConnection;
 import example.constant.Jdbcconstant;
 import example.entity.Student;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class Jdbcmetod {
@@ -128,6 +126,62 @@ public class Jdbcmetod {
                 JdbcConnection.closePreparedStatement(preparedStatement);
             } catch (SQLException sqlException) {
                 throw new RuntimeException(sqlException);
+            }
+        }
+    }
+
+
+    public void insertStudent(Student student) {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = JdbcConnection.getConnection();
+            if (connection == null) {
+                System.out.println("connection is null");
+            }
+            preparedStatement = connection.prepareStatement(Jdbcquery.QUERY_FIVE);
+            preparedStatement.setInt(1, student.getStudent_id());
+            preparedStatement.setString(2, student.getStudent_name());
+            preparedStatement.setInt(3, student.getStudent_age());
+            preparedStatement.setInt(4, student.getStudent_grade());
+            preparedStatement.setDate(5, new Date(student.getStudent_dob().getTime()));
+            preparedStatement.execute();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                JdbcConnection.closeConnection(connection);
+                JdbcConnection.closePreparedStatement(preparedStatement);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public void deleteStudent(int id) {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = JdbcConnection.getConnection();
+            if (connection == null) {
+                System.out.println("connection is null");
+            }
+            preparedStatement = connection.prepareStatement(Jdbcquery.QUERY_SIX);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                JdbcConnection.closeConnection(connection);
+                JdbcConnection.closePreparedStatement(preparedStatement);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
     }

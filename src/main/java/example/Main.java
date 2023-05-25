@@ -2,8 +2,10 @@ package example;
 
 import example.dao.Jdbcmetod;
 import example.entity.Student;
+import org.postgresql.ssl.PGjdbcHostnameVerifier;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -23,6 +25,16 @@ public class Main {
        /* Jdbcmetod jdbcmetod=new Jdbcmetod();
         jdbcmetod.deleteAllStudent();*/
 
+
+      /*  Student studentOne = new Student(1, "mehdi", 25, 20, new Date());
+        Student studentTwo = new Student(2, "erfan", 25, 20, new Date());
+        Jdbcmetod jdbcmetod = new Jdbcmetod();
+        jdbcmetod.insertStudent(studentOne);
+        jdbcmetod.insertStudent(studentTwo);*/
+
+
+        /* Jdbcmetod jdbcmetod=new Jdbcmetod();
+         jdbcmetod.deleteStudent(1);*/
 
 
     }
