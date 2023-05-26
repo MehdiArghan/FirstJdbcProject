@@ -37,5 +37,6 @@ public class Main {
          jdbcmetod.deleteStudent(1);*/
 
 
+
     }
 }
